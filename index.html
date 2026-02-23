@@ -1,2 +1,1039 @@
-test changed
- v2
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China & Hong Kong — Abril 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --red: #C41E3A;
+    --gold: #D4A843;
+    --dark: #1a1a2e;
+    --light: #f8f6f3;
+    --accent: #2E86AB;
+    --nature: #4A7C59;
+    --culture: #8B4513;
+    --city: #4A5568;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--light); color: #333; line-height: 1.7; }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(rgba(26,26,46,0.55), rgba(140,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1400&q=80') center/cover;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: white; padding: 2rem;
+  }
+  .cover h1 { font-family: 'Playfair Display', serif; font-size: 4rem; text-shadow: 2px 3px 15px rgba(0,0,0,0.5); margin-bottom: 0.3rem; }
+  .cover .subtitle { font-size: 1.6rem; color: var(--gold); font-weight: 300; margin-bottom: 1.5rem; }
+  .cover .dates { font-size: 1.1rem; opacity: 0.95; }
+  .cover .travelers { margin-top: 1.2rem; font-size: 1rem; background: rgba(255,255,255,0.12); padding: 0.6rem 1.5rem; border-radius: 30px; display: inline-block; }
+  .cover .version { position: absolute; bottom: 1.5rem; font-size: 0.8rem; opacity: 0.5; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--red); margin: 3rem 0 1.2rem; padding-bottom: 0.4rem; border-bottom: 3px solid var(--gold); }
+  h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--dark); margin: 1.5rem 0 0.75rem; }
+
+  /* ─── HERO IMAGES ─── */
+  .hero-img {
+    width: 100%; height: 260px; object-fit: cover; border-radius: 14px;
+    margin: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1rem 0; }
+  .img-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+  .img-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .img-grid.three img { height: 150px; }
+  .img-caption { font-size: 0.78rem; color: #888; text-align: center; margin-top: -0.5rem; margin-bottom: 1rem; }
+
+  /* ─── SUMMARY STRIP ─── */
+  .summary-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0;
+  }
+  .summary-item {
+    text-align: center; background: white; padding: 1.2rem 0.5rem; border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .summary-item .num { font-size: 2rem; font-weight: 700; color: var(--red); }
+  .summary-item .lbl { font-size: 0.8rem; color: #777; margin-top: 0.2rem; }
+
+  /* ─── FLIGHT CARD ─── */
+  .flight-card {
+    background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 0.75rem 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-left: 5px solid var(--accent);
+  }
+  .flight-card .route { font-size: 1.15rem; font-weight: 700; color: var(--dark); }
+  .flight-card .details { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.6rem; margin-top: 0.6rem; font-size: 0.88rem; }
+  .flight-card .di { background: #f0f4f8; padding: 0.4rem 0.7rem; border-radius: 6px; }
+  .flight-card .di strong { color: var(--accent); }
+
+  /* ─── DAY CARDS ─── */
+  .day-card { background: white; border-radius: 16px; margin: 2rem 0; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); page-break-inside: avoid; }
+  .day-header { padding: 1.1rem 1.4rem; color: white; display: flex; justify-content: space-between; align-items: center; }
+  .day-header.culture { background: linear-gradient(135deg, var(--culture), #A0522D); }
+  .day-header.nature { background: linear-gradient(135deg, var(--nature), #6B8E23); }
+  .day-header.city { background: linear-gradient(135deg, var(--city), #2D3748); }
+  .day-header.transit { background: linear-gradient(135deg, var(--accent), #1B6B93); }
+  .day-header.mixed { background: linear-gradient(135deg, #7B2D8E, #9B59B6); }
+  .day-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
+  .day-date { font-size: 0.85rem; opacity: 0.9; }
+  .day-tag { background: rgba(255,255,255,0.2); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.78rem; font-weight: 500; }
+  .day-body { padding: 1.4rem; }
+  .day-body .location { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+  .day-body .focus { color: var(--accent); font-weight: 500; font-size: 0.88rem; margin-bottom: 0.8rem; }
+  .activity { display: flex; gap: 0.7rem; margin: 0.5rem 0; align-items: flex-start; }
+  .activity .time { min-width: 55px; font-weight: 600; color: var(--accent); font-size: 0.82rem; }
+  .activity .desc { font-size: 0.92rem; }
+  .tip { background: #FFF8E1; border-radius: 8px; padding: 0.7rem 1rem; margin-top: 1rem; font-size: 0.82rem; color: #795548; }
+  .tip::before { content: '💡 '; }
+  .transport-info { background: #E3F2FD; border-radius: 8px; padding: 0.7rem 1rem; margin-top: 0.6rem; font-size: 0.82rem; color: #1565C0; }
+  .transport-info::before { content: '🚄 '; }
+
+  /* ─── TRANSPORT TABLE ─── */
+  table.tt { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+  table.tt th { background: var(--dark); color: white; padding: 0.65rem; text-align: left; font-weight: 600; }
+  table.tt td { padding: 0.55rem 0.65rem; border-bottom: 1px solid #e0e0e0; }
+  table.tt tr:nth-child(even) { background: #f9f9f9; }
+  table.tt .cost { font-weight: 700; color: var(--nature); }
+  table.tt .hl { background: #e3f2fd !important; }
+  table.tt .hlf { background: #fff3e0 !important; }
+
+  /* ─── COST BOX ─── */
+  .cost-box { background: linear-gradient(135deg, var(--dark), #16213e); color: white; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+  .cost-box h3 { color: var(--gold); margin-bottom: 1rem; }
+  .cost-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .cost-item { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px; text-align: center; }
+  .cost-item .amount { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+  .cost-item .label { font-size: 0.82rem; opacity: 0.8; margin-top: 0.2rem; }
+
+  /* ─── TIPS GRID ─── */
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .tip-card { background: white; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .tip-card .icon { font-size: 2rem; margin-bottom: 0.4rem; }
+  .tip-card h4 { color: var(--dark); margin-bottom: 0.4rem; }
+  .tip-card p { font-size: 0.85rem; color: #666; }
+
+  /* ─── ROUTE MAP ─── */
+  .route-map { background: linear-gradient(180deg, #E8F4FD 0%, #C5E1F5 50%, #B3D4E8 100%); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
+  .route-map svg { max-width: 100%; height: auto; }
+
+  /* ─── BALANCE BAR ─── */
+  .balance-bar { display: flex; border-radius: 10px; overflow: hidden; height: 38px; margin: 1rem 0; font-size: 0.73rem; font-weight: 600; color: white; }
+  .balance-bar div { display: flex; align-items: center; justify-content: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 2.4rem; }
+    .summary-strip { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 1rem; }
+    .img-grid.three { grid-template-columns: 1fr 1fr; }
+  }
+  @media print {
+    .cover { min-height: auto; padding: 3rem 2rem; }
+    .day-card { break-inside: avoid; }
+    body { font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <h1>China & Hong Kong</h1>
+  <div class="subtitle">Itinerario de Viaje · Abril 2026</div>
+  <div class="dates"><strong>5 – 28 de abril</strong> · 24 días · 8 ciudades</div>
+  <div class="travelers">Leonardo Gutiérrez & César Pérez</div>
+</div>
+
+<div class="container">
+
+<!-- ══════════ RESUMEN ══════════ -->
+<div class="summary-strip">
+  <div class="summary-item"><div class="num">24</div><div class="lbl">Días</div></div>
+  <div class="summary-item"><div class="num">8</div><div class="lbl">Ciudades</div></div>
+  <div class="summary-item"><div class="num">~6,000</div><div class="lbl">km internos</div></div>
+  <div class="summary-item"><div class="num">$3,642</div><div class="lbl">USD / persona</div></div>
+</div>
+
+<h3>Balance del viaje</h3>
+<div class="balance-bar">
+  <div style="width:24%;background:var(--culture)">🏛 Cultura 24%</div>
+  <div style="width:39%;background:var(--nature)">🏔 Naturaleza 39%</div>
+  <div style="width:28%;background:var(--city)">🌃 Ciudad 28%</div>
+  <div style="width:9%;background:var(--accent)">🚄 9%</div>
+</div>
+
+<!-- ══════════ MAPA ══════════ -->
+<h2>🗺️ Ruta</h2>
+<div class="route-map" style="background:linear-gradient(180deg,#daeaf6 0%,#c8dff0 100%);padding:1rem;position:relative">
+  <svg viewBox="0 0 960 680" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+    <defs>
+      <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+        <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.12"/>
+      </filter>
+      <marker id="arrowR" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#C41E3A"/>
+      </marker>
+      <marker id="arrowB" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#2E86AB"/>
+      </marker>
+      <linearGradient id="landGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f2e8d5"/>
+        <stop offset="100%" stop-color="#e8dcc5"/>
+      </linearGradient>
+      <linearGradient id="westGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ddd5c0"/>
+        <stop offset="100%" stop-color="#d5ccb5"/>
+      </linearGradient>
+      <radialGradient id="pulseRed" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#C41E3A" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#C41E3A" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Ocean labels -->
+    <text x="870" y="200" font-size="13" fill="#7eadc7" font-style="italic" font-family="serif" opacity="0.7" text-anchor="middle" transform="rotate(15,870,200)">Mar Amarillo</text>
+    <text x="890" y="400" font-size="14" fill="#7eadc7" font-style="italic" font-family="serif" opacity="0.7" text-anchor="middle" transform="rotate(10,890,400)">Mar de China Oriental</text>
+    <text x="780" y="610" font-size="13" fill="#7eadc7" font-style="italic" font-family="serif" opacity="0.7" text-anchor="middle">Mar de China Meridional</text>
+
+    <!-- CHINA outline (simplified realistic shape) -->
+    <path d="
+      M 135,60 L 180,42 L 230,35 L 275,55 L 310,40 L 365,30 L 410,45 L 440,25 L 480,18 L 530,28 L 570,20
+      L 615,40 L 660,35 L 710,58 L 740,52 L 775,75 L 790,100 L 810,120 L 820,155 L 805,185 L 825,215
+      L 830,250 L 818,280 L 800,300 L 812,325 L 820,355 L 808,380 L 785,395 L 770,420 L 755,440
+      L 740,460 L 710,478 L 685,488 L 660,505 L 635,518 L 610,530 L 590,545 L 575,558
+      L 555,548 L 540,535 L 520,545 L 500,555 L 485,565 L 468,558 L 455,548 L 445,530
+      L 428,538 L 412,548 L 398,555 L 380,545 L 360,530 L 345,520 L 325,512
+      L 308,518 L 290,525 L 270,520 L 248,505 L 230,498 L 210,505 L 190,510 L 170,500
+      L 148,490 L 130,475 L 115,460 L 100,440 L 90,415 L 82,390 L 78,360
+      L 72,330 L 68,300 L 62,270 L 55,240 L 50,210 L 55,180 L 65,150
+      L 78,120 L 95,95 L 115,75 L 135,60 Z
+    " fill="url(#landGrad)" stroke="#b8a88a" stroke-width="1.8" filter="url(#shadow)"/>
+
+    <!-- Western highlands hint -->
+    <path d="
+      M 135,60 L 180,42 L 230,35 L 275,55 L 270,80 L 250,110 L 225,145 L 200,190
+      L 175,240 L 155,290 L 138,340 L 125,380 L 115,420 L 110,445 L 100,440
+      L 90,415 L 82,390 L 78,360 L 72,330 L 68,300 L 62,270 L 55,240 L 50,210
+      L 55,180 L 65,150 L 78,120 L 95,95 L 115,75 L 135,60 Z
+    " fill="url(#westGrad)" stroke="none" opacity="0.45"/>
+
+    <!-- Mountain ranges hint (hatching) -->
+    <g stroke="#c4b498" stroke-width="0.6" opacity="0.3">
+      <line x1="145" y1="160" x2="180" y2="140"/><line x1="155" y1="180" x2="190" y2="160"/>
+      <line x1="130" y1="230" x2="165" y2="210"/><line x1="140" y1="260" x2="175" y2="240"/>
+      <line x1="120" y1="310" x2="155" y2="290"/><line x1="135" y1="350" x2="170" y2="330"/>
+      <line x1="200" y1="120" x2="240" y2="105"/><line x1="210" y1="150" x2="250" y2="130"/>
+    </g>
+
+    <!-- Major rivers (simplified) -->
+    <g fill="none" stroke="#8cbbd4" stroke-width="1.2" opacity="0.45">
+      <!-- Yellow River -->
+      <path d="M 180,250 Q 250,220 320,195 Q 420,160 500,140 Q 580,130 660,120 Q 720,115 770,140"/>
+      <!-- Yangtze River -->
+      <path d="M 170,370 Q 240,340 310,320 Q 380,310 430,330 Q 500,350 560,340 Q 640,310 720,290 Q 780,285 810,300"/>
+      <!-- Li/Pearl river region -->
+      <path d="M 450,470 Q 500,450 550,460 Q 600,475 640,500"/>
+    </g>
+
+    <!-- Taiwan & Hainan islands -->
+    <ellipse cx="815" cy="430" rx="18" ry="40" fill="#e8dcc5" stroke="#b8a88a" stroke-width="1" transform="rotate(-15,815,430)"/>
+    <text x="850" y="435" font-size="9" fill="#999" font-style="italic">Taiwan</text>
+    <ellipse cx="580" cy="590" rx="30" ry="22" fill="#e8dcc5" stroke="#b8a88a" stroke-width="1" transform="rotate(-30,580,590)"/>
+    <text x="580" y="595" font-size="8" fill="#999" text-anchor="middle">Hainan</text>
+
+    <!-- Hong Kong detail box -->
+    <rect x="665" y="486" width="8" height="6" rx="1" fill="#e8dcc5" stroke="#b8a88a" stroke-width="0.8"/>
+
+    <!-- ═══ ROUTE LINES ═══ -->
+
+    <!-- 1. HKG → Beijing (FLIGHT) -->
+    <path d="M 672,492 Q 720,350 720,180 Q 720,140 695,128" fill="none" stroke="#C41E3A" stroke-width="2.2" stroke-dasharray="10,5" marker-end="url(#arrowR)" opacity="0.85"/>
+    <rect x="726" y="280" width="52" height="18" rx="4" fill="white" fill-opacity="0.9" stroke="#C41E3A" stroke-width="0.5"/>
+    <text x="752" y="293" font-size="8.5" fill="#C41E3A" text-anchor="middle" font-weight="bold">✈ Vuelo</text>
+
+    <!-- 2. Beijing → Xi'an (TRAIN) -->
+    <path d="M 682,135 Q 600,170 520,225 Q 480,250 462,265" fill="none" stroke="#2E86AB" stroke-width="2.8" marker-end="url(#arrowB)"/>
+    <rect x="545" y="188" width="60" height="16" rx="4" fill="white" fill-opacity="0.9" stroke="#2E86AB" stroke-width="0.5"/>
+    <text x="575" y="200" font-size="8" fill="#2E86AB" text-anchor="middle" font-weight="600">Tren 4.5h</text>
+
+    <!-- 3. Xi'an → Chengdu (TRAIN) -->
+    <path d="M 445,278 Q 400,310 360,340 Q 330,365 315,378" fill="none" stroke="#2E86AB" stroke-width="2.8" marker-end="url(#arrowB)"/>
+    <rect x="352" y="318" width="60" height="16" rx="4" fill="white" fill-opacity="0.9" stroke="#2E86AB" stroke-width="0.5"/>
+    <text x="382" y="330" font-size="8" fill="#2E86AB" text-anchor="middle" font-weight="600">Tren 3.5h</text>
+
+    <!-- 4. Chengdu → Zhangjiajie (FLIGHT) -->
+    <path d="M 318,388 Q 380,390 440,395 Q 490,400 518,398" fill="none" stroke="#C41E3A" stroke-width="2.2" stroke-dasharray="10,5" marker-end="url(#arrowR)" opacity="0.85"/>
+    <rect x="395" y="378" width="52" height="16" rx="4" fill="white" fill-opacity="0.9" stroke="#C41E3A" stroke-width="0.5"/>
+    <text x="421" y="390" font-size="8" fill="#C41E3A" text-anchor="middle" font-weight="bold">✈ 2h</text>
+
+    <!-- 5. Zhangjiajie → Guilin (FLIGHT) -->
+    <path d="M 532,408 Q 540,430 548,450 Q 555,465 558,475" fill="none" stroke="#C41E3A" stroke-width="2.2" stroke-dasharray="10,5" marker-end="url(#arrowR)" opacity="0.85"/>
+
+    <!-- 6. Guilin → Yangshuo (cruise) -->
+    <path d="M 565,488 Q 572,496 578,502" fill="none" stroke="#4A7C59" stroke-width="2.5"/>
+
+    <!-- 7. Guilin region → Hangzhou (FLIGHT) -->
+    <path d="M 572,478 Q 630,420 690,370 Q 730,340 752,318" fill="none" stroke="#C41E3A" stroke-width="2.2" stroke-dasharray="10,5" marker-end="url(#arrowR)" opacity="0.85"/>
+    <rect x="650" y="380" width="52" height="16" rx="4" fill="white" fill-opacity="0.9" stroke="#C41E3A" stroke-width="0.5"/>
+    <text x="676" y="392" font-size="8" fill="#C41E3A" text-anchor="middle" font-weight="bold">✈ 2h</text>
+
+    <!-- 8. Hangzhou → Shanghai (TRAIN) -->
+    <path d="M 762,305 Q 775,285 784,268" fill="none" stroke="#2E86AB" stroke-width="2.8" marker-end="url(#arrowB)"/>
+    <rect x="772" y="278" width="55" height="14" rx="3" fill="white" fill-opacity="0.9" stroke="#2E86AB" stroke-width="0.5"/>
+    <text x="800" y="289" font-size="7.5" fill="#2E86AB" text-anchor="middle" font-weight="600">Tren 45m</text>
+
+    <!-- 9. Shanghai → HKG → LAX (FLIGHT out) -->
+    <path d="M 788,262 Q 800,330 770,400 Q 730,465 680,494" fill="none" stroke="#C41E3A" stroke-width="2" stroke-dasharray="8,4" opacity="0.5"/>
+
+    <!-- ═══ CITY MARKERS ═══ -->
+
+    <!-- Hong Kong (START) -->
+    <circle cx="670" cy="494" r="16" fill="url(#pulseRed)" stroke="none">
+      <animate attributeName="r" values="16;22;16" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="670" cy="494" r="9" fill="#C41E3A" stroke="white" stroke-width="2.5"/>
+    <text x="670" y="498" font-size="8" fill="white" text-anchor="middle" font-weight="bold">1</text>
+    <text x="692" y="490" font-size="13" font-weight="bold" fill="#333" font-family="'Playfair Display',serif">Hong Kong</text>
+    <text x="692" y="504" font-size="9" fill="#C41E3A" font-weight="600">INICIO · 1 día</text>
+
+    <!-- Beijing -->
+    <circle cx="695" cy="125" r="9" fill="#C41E3A" stroke="white" stroke-width="2.5"/>
+    <text x="695" y="129" font-size="8" fill="white" text-anchor="middle" font-weight="bold">2</text>
+    <text x="665" y="113" font-size="14" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="middle">Beijing</text>
+    <text x="665" y="100" font-size="9" fill="#666" text-anchor="middle">3 días · Muralla · Ciudad Prohibida</text>
+
+    <!-- Xi'an -->
+    <circle cx="452" cy="270" r="8" fill="#D4A843" stroke="white" stroke-width="2.5"/>
+    <text x="452" y="274" font-size="7.5" fill="white" text-anchor="middle" font-weight="bold">3</text>
+    <text x="425" y="258" font-size="12.5" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="end">Xi'an</text>
+    <text x="425" y="270" font-size="8.5" fill="#666" text-anchor="end">2 días · Terracota</text>
+
+    <!-- Chengdu -->
+    <circle cx="305" cy="385" r="8" fill="#D4A843" stroke="white" stroke-width="2.5"/>
+    <text x="305" y="389" font-size="7.5" fill="white" text-anchor="middle" font-weight="bold">4</text>
+    <text x="280" y="374" font-size="12.5" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="end">Chengdu</text>
+    <text x="280" y="386" font-size="8.5" fill="#666" text-anchor="end">3 días · Pandas · Leshan</text>
+
+    <!-- Zhangjiajie -->
+    <circle cx="530" cy="400" r="8" fill="#4A7C59" stroke="white" stroke-width="2.5"/>
+    <text x="530" y="404" font-size="7.5" fill="white" text-anchor="middle" font-weight="bold">5</text>
+    <text x="530" y="422" font-size="12" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="middle">Zhangjiajie</text>
+    <text x="530" y="434" font-size="8.5" fill="#666" text-anchor="middle">3 días · Avatar · Tianmen</text>
+
+    <!-- Guilin -->
+    <circle cx="562" cy="482" r="8" fill="#4A7C59" stroke="white" stroke-width="2.5"/>
+    <text x="562" y="486" font-size="7.5" fill="white" text-anchor="middle" font-weight="bold">6</text>
+    <text x="540" y="472" font-size="12" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="end">Guilin</text>
+
+    <!-- Yangshuo -->
+    <circle cx="582" cy="505" r="5.5" fill="#4A7C59" stroke="white" stroke-width="1.5"/>
+    <text x="600" y="510" font-size="9.5" fill="#333" font-weight="600">Yangshuo</text>
+    <text x="540" y="520" font-size="8.5" fill="#666" text-anchor="middle">4 días región · Río Li · Longji</text>
+
+    <!-- Hangzhou -->
+    <circle cx="756" cy="312" r="8" fill="#7B2D8E" stroke="white" stroke-width="2.5"/>
+    <text x="756" y="316" font-size="7.5" fill="white" text-anchor="middle" font-weight="bold">7</text>
+    <text x="730" y="338" font-size="12" font-weight="bold" fill="#333" font-family="'Playfair Display',serif" text-anchor="middle">Hangzhou</text>
+    <text x="730" y="350" font-size="8.5" fill="#666" text-anchor="middle">2 días · West Lake · Té</text>
+
+    <!-- Shanghai (END) -->
+    <circle cx="790" cy="255" r="16" fill="url(#pulseRed)" stroke="none">
+      <animate attributeName="r" values="16;22;16" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="790" cy="255" r="9" fill="#C41E3A" stroke="white" stroke-width="2.5"/>
+    <text x="790" y="259" font-size="8" fill="white" text-anchor="middle" font-weight="bold">8</text>
+    <text x="815" y="243" font-size="14" font-weight="bold" fill="#333" font-family="'Playfair Display',serif">Shanghai</text>
+    <text x="815" y="256" font-size="9" fill="#C41E3A" font-weight="600">FINAL · 4 días</text>
+
+    <!-- ═══ LEGEND ═══ -->
+    <rect x="30" y="600" width="320" height="62" rx="10" fill="white" fill-opacity="0.92" stroke="#ccc" stroke-width="0.8"/>
+    <text x="50" y="620" font-size="10.5" fill="#333" font-weight="bold">Leyenda</text>
+    <line x1="120" y1="616" x2="160" y2="616" stroke="#C41E3A" stroke-width="2.2" stroke-dasharray="8,4"/>
+    <circle cx="166" cy="616" r="3" fill="#C41E3A"/>
+    <text x="174" y="620" font-size="9.5" fill="#333">Vuelo</text>
+    <line x1="220" y1="616" x2="260" y2="616" stroke="#2E86AB" stroke-width="2.8"/>
+    <circle cx="266" cy="616" r="3" fill="#2E86AB"/>
+    <text x="274" y="620" font-size="9.5" fill="#333">Tren bala</text>
+    <line x1="50" y1="642" x2="90" y2="642" stroke="#4A7C59" stroke-width="2.5"/>
+    <text x="98" y="646" font-size="9.5" fill="#333">Crucero/Bus</text>
+    <circle cx="190" cy="642" r="7" fill="#C41E3A" stroke="white" stroke-width="1.5"/>
+    <text x="190" y="646" font-size="7" fill="white" text-anchor="middle" font-weight="bold">n</text>
+    <text x="204" y="646" font-size="9.5" fill="#333">Orden de visita</text>
+    <text x="50" y="656" font-size="8" fill="#999">8 ciudades · 24 días · ~6,000 km internos</text>
+
+    <!-- ═══ SCALE HINT ═══ -->
+    <line x1="380" y1="640" x2="440" y2="640" stroke="#999" stroke-width="1"/>
+    <line x1="380" y1="636" x2="380" y2="644" stroke="#999" stroke-width="1"/>
+    <line x1="440" y1="636" x2="440" y2="644" stroke="#999" stroke-width="1"/>
+    <text x="410" y="655" font-size="8" fill="#999" text-anchor="middle">~500 km</text>
+  </svg>
+</div>
+
+<!-- ══════════ VUELOS ══════════ -->
+<h2>✈️ Vuelos Reservados</h2>
+<p style="margin-bottom:0.8rem">Cathay Pacific · Ref: <strong>EEDXJM</strong> · $958.13 USD/persona · Economy Light (1 maleta 23 kg)</p>
+
+<div class="flight-card">
+  <div class="route">1 · LAX → Hong Kong</div>
+  <div class="details">
+    <div class="di"><strong>CX883</strong></div>
+    <div class="di"><strong>Sale:</strong> 3 abr, 23:30</div>
+    <div class="di"><strong>Llega:</strong> 5 abr, 05:45 (+2)</div>
+    <div class="di"><strong>Duración:</strong> 15h 15min</div>
+  </div>
+</div>
+<div class="flight-card">
+  <div class="route">2 · Hong Kong → Beijing</div>
+  <div class="details">
+    <div class="di"><strong>CX392</strong></div>
+    <div class="di"><strong>Sale:</strong> 6 abr, 13:55</div>
+    <div class="di"><strong>Llega:</strong> 6 abr, 17:25</div>
+    <div class="di"><strong>Duración:</strong> 3h 30min</div>
+  </div>
+</div>
+<div class="flight-card">
+  <div class="route">3 · Shanghai → Hong Kong</div>
+  <div class="details">
+    <div class="di"><strong>CX303</strong></div>
+    <div class="di"><strong>Sale:</strong> 28 abr, 07:20 (PVG T2)</div>
+    <div class="di"><strong>Llega:</strong> 28 abr, 10:10</div>
+    <div class="di"><strong>Duración:</strong> 2h 50min</div>
+  </div>
+</div>
+<div class="flight-card">
+  <div class="route">4 · Hong Kong → LAX</div>
+  <div class="details">
+    <div class="di"><strong>CX884</strong></div>
+    <div class="di"><strong>Sale:</strong> 28 abr, 12:45</div>
+    <div class="di"><strong>Llega:</strong> 28 abr, 10:45 (mismo día)</div>
+    <div class="di"><strong>Duración:</strong> 13h 00min</div>
+  </div>
+</div>
+
+<!-- ══════════ DÍA A DÍA ══════════ -->
+<h2>📅 Itinerario Día a Día</h2>
+
+<!-- PRE-VIAJE -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Pre-viaje</span><br><span class="day-date">Viernes 3 de abril</span></div>
+    <span class="day-tag">✈️ Vuelo nocturno</span>
+  </div>
+  <div class="day-body">
+    <div class="location">Los Angeles → en vuelo</div>
+    <div class="focus">Salida nocturna desde LAX — vuelo de 15h cruzando el Pacífico</div>
+    <div class="activities">
+      <div class="activity"><span class="time">21:30</span><span class="desc">Llegar a LAX Terminal B (2h antes del vuelo)</span></div>
+      <div class="activity"><span class="time">23:30</span><span class="desc">Despegue CX883 rumbo a Hong Kong. Vuelo nocturno de 15h 15min. El 4 de abril se "pierde" al cruzar la línea de fecha</span></div>
+    </div>
+    <div class="tip">Dormir en el avión es clave para el jet lag. Llevar antifaz, tapones y almohada de cuello.</div>
+  </div>
+</div>
+
+<!-- DÍA 1 — HONG KONG -->
+<div class="day-card">
+  <div class="day-header city">
+    <div><span class="day-num">Día 1</span><br><span class="day-date">Domingo 5 de abril</span></div>
+    <span class="day-tag">🌃 Hong Kong</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇭🇰 Hong Kong — Llegada y exploración</div>
+    <div class="focus">Victoria Peak · Star Ferry · Tsim Sha Tsui · Symphony of Lights</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=900&q=75" alt="Hong Kong skyline">
+    <div class="img-caption">Victoria Harbour — el skyline más icónico de Asia</div>
+    <div class="activities">
+      <div class="activity"><span class="time">05:45</span><span class="desc">Aterrizaje en HKG. Inmigración + Airport Express al centro (~25 min a Hong Kong Station)</span></div>
+      <div class="activity"><span class="time">08:00</span><span class="desc">Check-in temprano o dejar maletas. Desayuno: dim sum cantonés en Tim Ho Wan o Lin Heung Tea House</span></div>
+      <div class="activity"><span class="time">10:00</span><span class="desc"><strong>Victoria Peak:</strong> Subir en el Peak Tram (funicular desde 1888). Vistas panorámicas del skyline. Peak Circle Walk (~45 min)</span></div>
+      <div class="activity"><span class="time">12:30</span><span class="desc">Descenso y almuerzo en Central. Escalators de Mid-Levels, SoHo, Hollywood Road</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc">Descanso en hotel (jet lag, ~1.5h)</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc"><strong>Star Ferry:</strong> Cruce icónico de Victoria Harbour, Central → Tsim Sha Tsui (~8 min, ~$0.40 USD)</span></div>
+      <div class="activity"><span class="time">17:30</span><span class="desc"><strong>TST Promenade:</strong> Avenue of Stars. Esperar atardecer con vista al skyline de HK Island</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc">Cena cantonesa: roast goose en Yat Lok o mariscos en Temple Street Night Market</span></div>
+      <div class="activity"><span class="time">20:00</span><span class="desc"><strong>Symphony of Lights:</strong> Espectáculo de luces sobre Victoria Harbour (gratis desde TST waterfront)</span></div>
+    </div>
+    <div class="tip">Comprar Octopus Card ($HK 150 ~ $19 USD) en el aeropuerto. Sirve para metro, buses, ferries, 7-Eleven. Esencial.</div>
+  </div>
+</div>
+
+<!-- DÍA 2 — HKG → BEIJING -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 2</span><br><span class="day-date">Lunes 6 de abril</span></div>
+    <span class="day-tag">✈️ HKG → Beijing</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇭🇰 Hong Kong (mañana) → 🇨🇳 Beijing (noche)</div>
+    <div class="focus">Man Mo Temple · Mong Kok · Vuelo a Beijing · Llegada nocturna</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:30</span><span class="desc">Desayuno y check-out</span></div>
+      <div class="activity"><span class="time">08:30</span><span class="desc"><strong>Man Mo Temple</strong> (Hollywood Road) + mercado de jade/flores en Mong Kok</span></div>
+      <div class="activity"><span class="time">11:00</span><span class="desc">Airport Express al aeropuerto (~25 min). Almuerzo en HKG</span></div>
+      <div class="activity"><span class="time">13:55</span><span class="desc">✈️ CX392 HKG → Beijing Capital T3 (3h 30min)</span></div>
+      <div class="activity"><span class="time">17:25</span><span class="desc">Llegada a Beijing. Taxi/Didi al hotel (~45 min, ¥80-120 / $11-17)</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc">Check-in (zona Dongcheng/Hutongs). Cena: Pato Pekín o fideos en Guijie "Ghost Street"</span></div>
+    </div>
+    <div class="transport-info">CX392: HKG T1 → PEK T3 · 3h30 · Incluido en boleto internacional</div>
+    <div class="tip">En China: VPN instalada antes de llegar (ExpressVPN/NordVPN). eSIM china en aeropuerto PEK. Alipay configurado para pagos. Google/WhatsApp/Instagram NO funcionan sin VPN.</div>
+  </div>
+</div>
+
+<!-- DÍA 3 — BEIJING: CIUDAD PROHIBIDA -->
+<div class="day-card">
+  <div class="day-header culture">
+    <div><span class="day-num">Día 3</span><br><span class="day-date">Martes 7 de abril</span></div>
+    <span class="day-tag">🏛 Cultura imperial</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Beijing — Ciudad Prohibida y centro imperial</div>
+    <div class="focus">Tiananmen · Ciudad Prohibida · Jingshan Park · Hutongs · Houhai</div>
+    <div class="img-grid">
+      <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=600&q=75" alt="Forbidden City">
+      <img src="https://images.unsplash.com/photo-1591105575837-86b927631ef7?w=600&q=75" alt="Tiananmen">
+    </div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:30</span><span class="desc">Desayuno: jianbing (crêpe callejero chino) en un puesto local</span></div>
+      <div class="activity"><span class="time">08:00</span><span class="desc"><strong>Plaza Tiananmen:</strong> La plaza pública más grande del mundo (440,000 m²)</span></div>
+      <div class="activity"><span class="time">08:30</span><span class="desc"><strong>Ciudad Prohibida:</strong> 72 hectáreas, 980 edificios. Eje central: Puerta de la Suprema Armonía → Salón de la Armonía Suprema → jardines imperiales. <em>Mínimo 3-4 horas</em></span></div>
+      <div class="activity"><span class="time">12:30</span><span class="desc"><strong>Parque Jingshan:</strong> La MEJOR vista aérea de la Ciudad Prohibida. Foto obligatoria</span></div>
+      <div class="activity"><span class="time">13:30</span><span class="desc">Almuerzo en hutongs: zhajiangmian o jiaozi (dumplings)</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc"><strong>Hutongs de Beijing:</strong> Nanluoguxiang. Arquitectura siheyuan, tiendas artesanales, cafés</span></div>
+      <div class="activity"><span class="time">18:00</span><span class="desc"><strong>Houhai Lake:</strong> Paseo y cena al atardecer junto al lago</span></div>
+    </div>
+    <div class="tip">Reservar Ciudad Prohibida online (¥60 / ~$8). Se agotan. Pasaporte obligatorio. Cierra los lunes.</div>
+  </div>
+</div>
+
+<!-- DÍA 4 — GRAN MURALLA -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 4</span><br><span class="day-date">Miércoles 8 de abril</span></div>
+    <span class="day-tag">🏔 Gran Muralla</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Beijing — Gran Muralla China (Mutianyu)</div>
+    <div class="focus">Gran Muralla · Sección Mutianyu · Torres de vigilancia · Tobogán</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=900&q=75" alt="Great Wall of China">
+    <div class="img-caption">Gran Muralla — sección Mutianyu, menos turística y mejor conservada</div>
+    <div class="activities">
+      <div class="activity"><span class="time">06:30</span><span class="desc">Salida temprana. Transporte a Mutianyu (~1.5–2h)</span></div>
+      <div class="activity"><span class="time">09:00</span><span class="desc"><strong>Gran Muralla — Mutianyu:</strong> Subir en teleférico. Recorrer torres 14 a 23 (la sección más fotogénica)</span></div>
+      <div class="activity"><span class="time">09:30</span><span class="desc">Caminata 3-4 km entre torres con vistas a montañas. En abril la vegetación reverdece</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Bajada en tobogán (luge ride) — experiencia única de Mutianyu</span></div>
+      <div class="activity"><span class="time">12:30</span><span class="desc">Almuerzo en el pueblo. Regreso a Beijing (~2h)</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc">Cena en Wangfujing Street (restaurantes laterales, no la calle de snacks turísticos)</span></div>
+    </div>
+    <div class="tip">Mutianyu: entrada ¥40 (~$6), teleférico ¥120 ida/vuelta (~$17). Llegar antes de 9 AM. Transporte privado ida/vuelta: ¥400-600 (~$55-85) entre los dos.</div>
+  </div>
+</div>
+
+<!-- DÍA 5 — TEMPLO DEL CIELO + PALACIO DE VERANO -->
+<div class="day-card">
+  <div class="day-header culture">
+    <div><span class="day-num">Día 5</span><br><span class="day-date">Jueves 9 de abril</span></div>
+    <span class="day-tag">🏛 Templos y palacios</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Beijing — Templo del Cielo y Palacio de Verano</div>
+    <div class="focus">Templo del Cielo · Tai chi matutino · Palacio de Verano · Lago Kunming</div>
+    <div class="img-grid">
+      <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=600&q=75" alt="Temple of Heaven">
+      <img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=600&q=75" alt="Summer Palace">
+    </div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc"><strong>Templo del Cielo:</strong> Llegar temprano para ver tai chi, danzas y cantos de locales. Salón de Oración sin un solo clavo</span></div>
+      <div class="activity"><span class="time">10:00</span><span class="desc">Brunch</span></div>
+      <div class="activity"><span class="time">11:30</span><span class="desc"><strong>Palacio de Verano:</strong> 297 hectáreas. Lago Kunming, Long Corridor (728m de galería pintada), Barco de Mármol. UNESCO</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc">Paseo en bote por el Lago Kunming (¥60 / ~$8)</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc">Última cena en Beijing: Pato Pekín en Siji Minfu o Da Dong. El pato en 3 formas: piel, carne, sopa</span></div>
+    </div>
+    <div class="tip">Templo: ¥34. Palacio: ¥30. Ambos enormes — zapatos cómodos. Reservar entradas online.</div>
+  </div>
+</div>
+
+<!-- DÍA 6 — BEIJING → XI'AN -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 6</span><br><span class="day-date">Viernes 10 de abril</span></div>
+    <span class="day-tag">🚄 Beijing → Xi'an</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Beijing → Xi'an (Tren Bala)</div>
+    <div class="focus">Tren de alta velocidad · Muralla de Xi'an en bicicleta · Muslim Quarter</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:30</span><span class="desc">Check-out. Metro a Beijing West Station</span></div>
+      <div class="activity"><span class="time">09:00</span><span class="desc">🚄 <strong>Tren bala G-series</strong> Beijing West → Xi'an North (~4.5h, ¥515 / ~$72)</span></div>
+      <div class="activity"><span class="time">13:30</span><span class="desc">Llegada Xi'an. Metro al centro (~40 min). Check-in</span></div>
+      <div class="activity"><span class="time">16:00</span><span class="desc"><strong>Muralla de Xi'an:</strong> Bicicleta sobre la muralla Ming (13.7 km, ~1.5h). La muralla mejor conservada de China</span></div>
+      <div class="activity"><span class="time">18:30</span><span class="desc"><strong>Muslim Quarter:</strong> Cena épica: roujiamo (hamburguesa china de cordero), biangbiang noodles (fideos de 2m). 1,000+ años de historia islámica china</span></div>
+    </div>
+    <div class="transport-info">Tren G: Beijing West → Xi'an North · ~4h30 · 2ª clase ~¥515 (~$72). Reservar en Trip.com con 15-30 días de anticipación.</div>
+  </div>
+</div>
+
+<!-- DÍA 7 — GUERREROS DE TERRACOTA -->
+<div class="day-card">
+  <div class="day-header culture">
+    <div><span class="day-num">Día 7</span><br><span class="day-date">Sábado 11 de abril</span></div>
+    <span class="day-tag">🏛 Guerreros de Terracota</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Xi'an — Guerreros de Terracota y ciudad</div>
+    <div class="focus">Ejército de Terracota · Gran Mezquita · Torres de Campana y Tambor</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1591017403286-fd8493524e1e?w=900&q=75" alt="Terracotta Warriors">
+    <div class="img-caption">Ejército de Terracota — más de 8,000 guerreros únicos protegiendo la tumba del emperador Qin Shi Huang</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Salida al museo (bus 306, ~1h, ¥7)</span></div>
+      <div class="activity"><span class="time">08:30</span><span class="desc"><strong>Guerreros de Terracota:</strong> Descubiertos en 1974. Fosa 1 (6,000 guerreros), Fosa 2 (élite), Fosa 3 (comandancia). Audioguía en español</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Regreso. Almuerzo en Muslim Quarter</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>Gran Mezquita (742 d.C.):</strong> Fusión arquitectónica china-islámica</span></div>
+      <div class="activity"><span class="time">15:30</span><span class="desc"><strong>Torres de Campana y Tambor:</strong> Centro simbólico de Xi'an desde 1384</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc">Cena de despedida. Opción: espectáculo Tang Dynasty</span></div>
+    </div>
+    <div class="tip">Terracota: ¥120 (~$17). Ir antes de las 9 — tours grupales llegan a las 10.</div>
+  </div>
+</div>
+
+<!-- DÍA 8 — XI'AN → CHENGDU -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 8</span><br><span class="day-date">Domingo 12 de abril</span></div>
+    <span class="day-tag">🚄 Xi'an → Chengdu</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Xi'an → Chengdu (Tren Bala)</div>
+    <div class="focus">Montañas Qinling · Kuanzhai Alley · Jinli Street · Hotpot sichuanés</div>
+    <div class="activities">
+      <div class="activity"><span class="time">09:30</span><span class="desc">🚄 <strong>Xi'an → Chengdu East</strong> (~3.5h). Paisaje espectacular cruzando las montañas Qinling</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc">Llegada Chengdu. Almuerzo: dandan noodles o mapo tofu auténticos</span></div>
+      <div class="activity"><span class="time">15:30</span><span class="desc"><strong>Kuanzhai Alley:</strong> Tres callejones Qing restaurados. Casas de té, ear cleaning tradicional</span></div>
+      <div class="activity"><span class="time">18:00</span><span class="desc"><strong>Jinli Ancient Street:</strong> Faroles rojos, sombras chinescas, dulces de azúcar soplado</span></div>
+      <div class="activity"><span class="time">19:30</span><span class="desc"><strong>Hotpot sichuanés:</strong> Caldo rojo con pimienta de Sichuan (efecto adormecedor). Xiaolongkan o Huangcheng Laoma. Pedir medio-medio</span></div>
+    </div>
+    <div class="transport-info">Tren D/G: Xi'an North → Chengdu East · ~3h30 · ¥263 (~$37)</div>
+  </div>
+</div>
+
+<!-- DÍA 9 — PANDAS -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 9</span><br><span class="day-date">Lunes 13 de abril</span></div>
+    <span class="day-tag">🐼 Pandas</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Chengdu — Base de Pandas y cultura local</div>
+    <div class="focus">Pandas gigantes · Parque del Pueblo · Ópera sichuanesa</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=900&q=75" alt="Giant Panda">
+    <div class="img-caption">Pandas gigantes en la Base de Investigación de Chengdu</div>
+    <div class="activities">
+      <div class="activity"><span class="time">06:30</span><span class="desc"><strong>Base de Pandas:</strong> LLEGAR TEMPRANO — los pandas son activos antes de las 10 AM. Después duermen. Pandas adultos, cachorros y pandas rojos</span></div>
+      <div class="activity"><span class="time">10:30</span><span class="desc">Regreso al centro</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc"><strong>Parque del Pueblo:</strong> Casas de té donde los locales juegan mahjong. Sentarse en silla de bambú con té de jazmín</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc"><strong>Wuhou Shrine:</strong> Templo de los Tres Reinos. Bonsáis centenarios</span></div>
+      <div class="activity"><span class="time">20:00</span><span class="desc"><strong>Ópera sichuanesa (Shu Feng Ya Yun):</strong> Famoso bian lian (cambio de caras) — máscaras cambian en fracciones de segundo</span></div>
+    </div>
+    <div class="tip">Base de Pandas: ¥55 (~$8). Reservar online la noche anterior. Llegar 7:30 AM máximo.</div>
+  </div>
+</div>
+
+<!-- DÍA 10 — LESHAN -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 10</span><br><span class="day-date">Martes 14 de abril</span></div>
+    <span class="day-tag">🏔 Buda Gigante</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Chengdu → Leshan (excursión) → Chengdu</div>
+    <div class="focus">Buda Gigante de Leshan (71m) · Patrimonio UNESCO</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=900&q=75" alt="Leshan Giant Buddha">
+    <div class="img-caption">Buda Gigante de Leshan — 71 metros tallados en el acantilado durante 90 años (713-803 d.C.)</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Tren Chengdu → Leshan (~1h, ¥65 / ~$9)</span></div>
+      <div class="activity"><span class="time">08:30</span><span class="desc"><strong>Buda Gigante:</strong> El Buda de piedra más grande del mundo. Descender escaleras junto a su cuerpo. Bote en el río para la vista completa</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc">Regreso a Chengdu. Tarde libre</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc">Cena y preparación para vuelo del día siguiente</span></div>
+    </div>
+    <div class="tip">Leshan: ¥80 (~$11). Bote por el río (¥70 / ~$10) da la mejor perspectiva. Llegar temprano — las escaleras tienen filas largas.</div>
+  </div>
+</div>
+
+<!-- DÍA 11 — ZHANGJIAJIE: TIANMEN -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 11</span><br><span class="day-date">Miércoles 15 de abril</span></div>
+    <span class="day-tag">✈️ → Zhangjiajie</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Chengdu → Zhangjiajie · Tianmen Mountain</div>
+    <div class="focus">Vuelo · Teleférico más largo del mundo · Glass Skywalk · Puerta del Cielo</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=900&q=75" alt="Tianmen Mountain">
+    <div class="img-caption">Tianmen Mountain — teleférico de 7,455m y Glass Skywalk a 1,430m de altura</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Vuelo Chengdu → Zhangjiajie (~2h). Check-in hotel zona Wulingyuan</span></div>
+      <div class="activity"><span class="time">13:30</span><span class="desc"><strong>Tianmen Mountain:</strong> Teleférico 7,455m (~28 min). Tianmen Cave: arco natural de 131m</span></div>
+      <div class="activity"><span class="time">14:30</span><span class="desc"><strong>Glass Skywalk:</strong> Pasarela de cristal sobre el vacío. Experiencia inolvidable</span></div>
+      <div class="activity"><span class="time">16:00</span><span class="desc">Bajada por 999 escalones o carretera de 99 curvas cerradas</span></div>
+    </div>
+    <div class="transport-info">Vuelo Chengdu → Zhangjiajie: ~2h · ~$85-170</div>
+    <div class="tip">Tianmen: ¥278 (~$39) incluye teleférico. Llevar chaqueta — la cima es 10-15°C más fría.</div>
+  </div>
+</div>
+
+<!-- DÍA 12 — AVATAR -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 12</span><br><span class="day-date">Jueves 16 de abril</span></div>
+    <span class="day-tag">🏔 Montañas Avatar</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Zhangjiajie — Parque Nacional (Yuanjiajie)</div>
+    <div class="focus">Pilares de Avatar · Bailong Elevator · Golden Whip Stream</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1537531383496-f4749b854322?w=900&q=75" alt="Zhangjiajie Avatar mountains">
+    <div class="img-caption">Pilares de arenisca de Yuanjiajie — inspiración de las montañas flotantes de Avatar</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Entrada por puerta Wulingyuan</span></div>
+      <div class="activity"><span class="time">07:30</span><span class="desc"><strong>Bailong Elevator:</strong> El elevador exterior más alto del mundo (326m, sube en 2 min)</span></div>
+      <div class="activity"><span class="time">08:00</span><span class="desc"><strong>Yuanjiajie:</strong> Avatar Hallelujah Mountain. "First Bridge Under Heaven". Mirador Mihun Tai</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc"><strong>Golden Whip Stream:</strong> Caminata 7.5 km entre pilares cubiertos de musgo. Monos salvajes (~2-3h)</span></div>
+    </div>
+    <div class="tip">Parque: ¥225 (~$32) válido 4 días. Abril = menos turistas. Llevar impermeable — la niebla hace fotos más dramáticas.</div>
+  </div>
+</div>
+
+<!-- DÍA 13 — TIANZI MOUNTAIN -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 13</span><br><span class="day-date">Viernes 17 de abril</span></div>
+    <span class="day-tag">🏔 Tianzi Mountain</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Zhangjiajie — Tianzi Mountain y miradores</div>
+    <div class="focus">Tianzi Mountain · Imperial Brush Peak · Ten-Mile Gallery</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Bus interno a Tianzi Mountain</span></div>
+      <div class="activity"><span class="time">08:00</span><span class="desc"><strong>Tianzi Mountain:</strong> Punto más alto. "Imperial Brush Peak" — pilares como pinceles de caligrafía. Si hay niebla: "mar de nubes"</span></div>
+      <div class="activity"><span class="time">10:00</span><span class="desc"><strong>He Long Park:</strong> Mirador panorámico del "jardín celestial"</span></div>
+      <div class="activity"><span class="time">11:30</span><span class="desc"><strong>Ten-Mile Gallery:</strong> Valle entre pilares verticales. "Old Man Gathering Herbs", "Three Sisters"</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc">Salida. Preparar vuelo a Guilin</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 14 — GUILIN -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 14</span><br><span class="day-date">Sábado 18 de abril</span></div>
+    <span class="day-tag">✈️ → Guilin</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Zhangjiajie → Guilin</div>
+    <div class="focus">Vuelo · Elephant Trunk Hill · Reed Flute Cave · Night Cruise</div>
+    <div class="activities">
+      <div class="activity"><span class="time">08:00</span><span class="desc">Vuelo Zhangjiajie → Guilin (~1.5h)</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Almuerzo: mifen (fideos de arroz de Guilin)</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>Elephant Trunk Hill:</strong> Símbolo de Guilin. Formación kárstica como elefante bebiendo del río</span></div>
+      <div class="activity"><span class="time">16:00</span><span class="desc"><strong>Reed Flute Cave:</strong> Estalactitas de 180 millones de años iluminadas. Inscripciones Tang</span></div>
+      <div class="activity"><span class="time">19:30</span><span class="desc"><strong>Two Rivers Four Lakes Night Cruise:</strong> Pagodas del Sol y la Luna iluminadas (~1.5h)</span></div>
+    </div>
+    <div class="transport-info">Vuelo Zhangjiajie → Guilin: ~1h15 · ~$70-130</div>
+  </div>
+</div>
+
+<!-- DÍA 15 — RÍO LI -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 15</span><br><span class="day-date">Domingo 19 de abril</span></div>
+    <span class="day-tag">🚢 Río Li</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Guilin → Yangshuo (Crucero Río Li)</div>
+    <div class="focus">Crucero 4-5h · Paisaje del billete de ¥20 · Yangshuo · West Street</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1537734796389-76d0a1dbe68a?w=900&q=75" alt="Li River Guilin">
+    <div class="img-caption">Río Li — los picos kársticos más fotografiados de China, paisaje del billete de ¥20</div>
+    <div class="activities">
+      <div class="activity"><span class="time">09:00</span><span class="desc"><strong>Crucero Río Li:</strong> 4-5 horas entre picos kársticos. "Nine Horses Fresco Hill", "Yellow Cloth Shoal". Búfalos de agua, pescadores con cormoranes</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc">Llegada a Yangshuo. Check-in</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc"><strong>West Street:</strong> Calle peatonal, cafés, cerveza local</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc">Cena: beer fish — pescado de río cocinado en cerveza local</span></div>
+      <div class="activity"><span class="time">20:30</span><span class="desc"><strong>Impression Liu Sanjie</strong> (opcional): Espectáculo de Zhang Yimou con 600+ actores sobre el río Li</span></div>
+    </div>
+    <div class="tip">Crucero: ¥210-360 (~$30-50). Abril = temporada ideal: agua clara, buen clima.</div>
+  </div>
+</div>
+
+<!-- DÍA 16 — YANGSHUO EN BICI -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 16</span><br><span class="day-date">Lunes 20 de abril</span></div>
+    <span class="day-tag">🚲 Rural</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Yangshuo — Countryside en bicicleta</div>
+    <div class="focus">Ciclismo rural · Río Yulong bamboo rafting · Moon Hill</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1528164344885-60e3eae1aeb7?w=900&q=75" alt="Yangshuo karst landscape">
+    <div class="img-caption">Yangshuo — pedalear entre arrozales y picos kársticos</div>
+    <div class="activities">
+      <div class="activity"><span class="time">08:00</span><span class="desc"><strong>Bicicleta:</strong> Ruta Yangshuo → Yulong River → Moon Hill (~20 km, terreno plano)</span></div>
+      <div class="activity"><span class="time">10:00</span><span class="desc"><strong>Río Yulong — Bamboo Rafting:</strong> Balsa de bambú ~1.5h. Más tranquilo que el Río Li. Puentes centenarios</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>Moon Hill:</strong> Arco kárstico. Subida ~20 min. Vista panorámica del valle</span></div>
+      <div class="activity"><span class="time">18:00</span><span class="desc">Paseo nocturno por West Street</span></div>
+    </div>
+    <div class="tip">Bamboo rafting Yulong: ¥200 (~$28) por balsa (2 personas). Mucho mejor que el rafting del Li River.</div>
+  </div>
+</div>
+
+<!-- DÍA 17 — LONGJI RICE TERRACES -->
+<div class="day-card">
+  <div class="day-header nature">
+    <div><span class="day-num">Día 17</span><br><span class="day-date">Martes 21 de abril</span></div>
+    <span class="day-tag">🌾 Terrazas de arroz</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Yangshuo → Longji Rice Terraces → Guilin</div>
+    <div class="focus">Terrazas Longji · Cultura Zhuang/Yao · Regreso a Guilin</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=900&q=75" alt="Longji Rice Terraces">
+    <div class="img-caption">Terrazas de arroz Longji — en abril se llenan de agua reflejando el cielo</div>
+    <div class="activities">
+      <div class="activity"><span class="time">07:00</span><span class="desc">Check-out Yangshuo. Transporte a Longji (~3h)</span></div>
+      <div class="activity"><span class="time">10:30</span><span class="desc"><strong>Longji "Espalda del Dragón":</strong> 700 años de terrazas talladas. En abril = espejos de agua. Miradores "Seven Stars Around the Moon" y "Nine Dragons"</span></div>
+      <div class="activity"><span class="time">12:30</span><span class="desc">Almuerzo en aldea Ping'an: arroz en bambú</span></div>
+      <div class="activity"><span class="time">13:30</span><span class="desc">Mujeres Yao (famosas por su cabello extremadamente largo)</span></div>
+      <div class="activity"><span class="time">15:30</span><span class="desc">Regreso a Guilin (~2h). Hotel cerca de estación</span></div>
+    </div>
+    <div class="tip">Longji: ¥80 (~$11). Tour desde Yangshuo: ~$55-85/persona. Abril = temporada "espejos de agua" — momento fotográfico top.</div>
+  </div>
+</div>
+
+<!-- DÍA 18 — HANGZHOU -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 18</span><br><span class="day-date">Miércoles 22 de abril</span></div>
+    <span class="day-tag">✈️ → Hangzhou</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Guilin → Hangzhou</div>
+    <div class="focus">Vuelo · West Lake al atardecer · Broken Bridge</div>
+    <div class="activities">
+      <div class="activity"><span class="time">08:00</span><span class="desc">Vuelo Guilin → Hangzhou (~2h)</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc">Almuerzo: dongpo pork o longjing shrimp</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc"><strong>West Lake — Su Causeway:</strong> 2.8 km con 6 puentes. El lago que inspiró poetas 1,000 años. UNESCO</span></div>
+      <div class="activity"><span class="time">17:30</span><span class="desc"><strong>Atardecer en Broken Bridge:</strong> Uno de los "10 paisajes clásicos de China"</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc">Cena: beggar's chicken (pollo en loto y arcilla, 6 horas)</span></div>
+    </div>
+    <div class="transport-info">Vuelo Guilin → Hangzhou: ~2h · ~$70-130</div>
+  </div>
+</div>
+
+<!-- DÍA 19 — HANGZHOU COMPLETO -->
+<div class="day-card">
+  <div class="day-header mixed">
+    <div><span class="day-num">Día 19</span><br><span class="day-date">Jueves 23 de abril</span></div>
+    <span class="day-tag">🍵 Lago y té</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Hangzhou — West Lake, Lingyin y plantaciones de té</div>
+    <div class="focus">Lingyin Temple · Bote en West Lake · Plantaciones Longjing · Hefang Street</div>
+    <div class="img-grid">
+      <img src="https://images.unsplash.com/photo-1563822249366-3efb23b8e0c9?w=600&q=75" alt="Tea plantation">
+      <img src="https://images.unsplash.com/photo-1580125490819-b5a04e3e59ba?w=600&q=75" alt="West Lake Hangzhou">
+    </div>
+    <div class="activities">
+      <div class="activity"><span class="time">08:00</span><span class="desc"><strong>Templo Lingyin (328 d.C.):</strong> Budas tallados en roca, Gran Buda de 24m, cantos de monjes</span></div>
+      <div class="activity"><span class="time">10:30</span><span class="desc"><strong>Bote en West Lake:</strong> Tres Estanques Reflejando la Luna (imagen del billete de ¥1)</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Almuerzo en Louwailou (junto al lago, desde 1848)</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>Plantaciones de Té Longjing:</strong> El té verde más famoso de China. Degustación. En abril = temporada de cosecha y recolección</span></div>
+      <div class="activity"><span class="time">16:30</span><span class="desc"><strong>Hefang Street:</strong> Artesanos, farmacia tradicional centenaria, abanicos de seda</span></div>
+    </div>
+    <div class="tip">Bote: ¥55. Lingyin: ¥75. Comprar té Longjing directamente a agricultores — primera cosecha (Ming Qian) es el más preciado.</div>
+  </div>
+</div>
+
+<!-- DÍA 20 — SHANGHAI: BUND -->
+<div class="day-card">
+  <div class="day-header city">
+    <div><span class="day-num">Día 20</span><br><span class="day-date">Viernes 24 de abril</span></div>
+    <span class="day-tag">🌃 Shanghai</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Hangzhou → Shanghai · The Bund y Pudong</div>
+    <div class="focus">Tren bala 45 min · Nanjing Road · The Bund · Shanghai Tower</div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=900&q=75" alt="Shanghai Bund skyline">
+    <div class="img-caption">The Bund — el contraste entre el Shanghai colonial del s.XIX y el futurista del s.XXI</div>
+    <div class="activities">
+      <div class="activity"><span class="time">09:00</span><span class="desc">🚄 Hangzhou → Shanghai Hongqiao (~45 min, ¥73 / ~$10)</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Almuerzo: xiaolongbao en Jia Jia Tang Bao (local, auténtico)</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>Nanjing Road:</strong> Calle comercial más famosa de China. 5.5 km hasta The Bund</span></div>
+      <div class="activity"><span class="time">16:00</span><span class="desc"><strong>The Bund:</strong> 1.5 km de edificios coloniales frente al skyline de Pudong. El contraste es hipnótico</span></div>
+      <div class="activity"><span class="time">17:30</span><span class="desc">Esperar al atardecer — el skyline se ilumina gradualmente</span></div>
+      <div class="activity"><span class="time">19:00</span><span class="desc"><strong>Shanghai Tower (piso 118, 561m):</strong> La vista más alta de China</span></div>
+    </div>
+    <div class="transport-info">Tren G: Hangzhou → Shanghai · 45 min · ¥73 (~$10)</div>
+    <div class="tip">Shanghai Tower: ¥180 (~$25). Ir al atardecer. Ferry Huangpu (¥2) es mejor experiencia que el túnel turístico.</div>
+  </div>
+</div>
+
+<!-- DÍA 21 — SHANGHAI: YU GARDEN + FRENCH CONCESSION -->
+<div class="day-card">
+  <div class="day-header city">
+    <div><span class="day-num">Día 21</span><br><span class="day-date">Sábado 25 de abril</span></div>
+    <span class="day-tag">🌃 Cultura urbana</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Shanghai — Yu Garden y Concesión Francesa</div>
+    <div class="focus">Jardín Yuyuan · Old Town · French Concession · Tianzifang · Jazz</div>
+    <div class="img-grid">
+      <img src="https://images.unsplash.com/photo-1567606404787-6f3f85e4d3e4?w=600&q=75" alt="Yu Garden">
+      <img src="https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=600&q=75" alt="Shanghai night">
+    </div>
+    <div class="activities">
+      <div class="activity"><span class="time">08:30</span><span class="desc"><strong>Jardín Yuyuan (1559):</strong> Jardín Ming. Puente en zigzag (confunde espíritus malignos). Huxinting Tea House sobre el estanque</span></div>
+      <div class="activity"><span class="time">12:00</span><span class="desc">Shengjianbao (dumpling frito) en Yang's Fried Dumplings</span></div>
+      <div class="activity"><span class="time">14:00</span><span class="desc"><strong>French Concession:</strong> Calles arboladas, mansiones Art Deco, boutiques. Wukang Road, Fuxing Road</span></div>
+      <div class="activity"><span class="time">16:00</span><span class="desc"><strong>Tianzifang:</strong> Laberinto de galerías, estudios de diseño, bares escondidos</span></div>
+      <div class="activity"><span class="time">18:30</span><span class="desc">Cena en Xintiandi. Cocina de fusión</span></div>
+      <div class="activity"><span class="time">21:00</span><span class="desc">Jazz bar en Fairmont Peace Hotel (legendario, en The Bund) o rooftop bar</span></div>
+    </div>
+    <div class="tip">Yu Garden: ¥40. Concesión Francesa en bici compartida (Mobike, escanear con Alipay). Tianzifang gratis.</div>
+  </div>
+</div>
+
+<!-- DÍA 22 — SHANGHAI LIBRE -->
+<div class="day-card">
+  <div class="day-header city">
+    <div><span class="day-num">Día 22</span><br><span class="day-date">Domingo 26 de abril</span></div>
+    <span class="day-tag">🏛 Museos</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Shanghai — Museos y tiempo libre</div>
+    <div class="focus">Shanghai Museum · M50 Art Park · Compras · Haidilao</div>
+    <div class="activities">
+      <div class="activity"><span class="time">09:00</span><span class="desc"><strong>Shanghai Museum:</strong> Bronces, cerámicas, caligrafía, jade. Edificio en forma de ding. Gratuito</span></div>
+      <div class="activity"><span class="time">11:30</span><span class="desc"><strong>Propaganda Poster Art Centre:</strong> Posters 1949-1979. Escondido en un sótano residencial</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc">M50 Creative Park (arte contemporáneo en almacenes)</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc">Libre: Nanjing Road, South Bund Fabric Market (ropa a medida en 24h), o relax</span></div>
+      <div class="activity"><span class="time">18:00</span><span class="desc">Última cena: Haidilao hotpot, Fu 1088, o street food Wujiang Road</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 23 — ÚLTIMO DÍA -->
+<div class="day-card">
+  <div class="day-header city">
+    <div><span class="day-num">Día 23</span><br><span class="day-date">Lunes 27 de abril</span></div>
+    <span class="day-tag">📦 Último día</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Shanghai — Último día · Traslado a Pudong</div>
+    <div class="focus">Actividades finales · Hotel cerca de PVG · Descanso temprano</div>
+    <div class="activities">
+      <div class="activity"><span class="time">09:00</span><span class="desc">Mañana libre: repetir lugar favorito, compras, o Zhujiajiao Water Town (~1h, "Venecia de Shanghai")</span></div>
+      <div class="activity"><span class="time">13:00</span><span class="desc">Almuerzo de despedida</span></div>
+      <div class="activity"><span class="time">15:00</span><span class="desc">Check-out. Empacar para regreso</span></div>
+      <div class="activity"><span class="time">17:00</span><span class="desc"><strong>Traslado a hotel cerca de Pudong Airport</strong> (~45-60 min, ¥150-200 / $20-28)</span></div>
+      <div class="activity"><span class="time">21:00</span><span class="desc"><strong>Dormir temprano.</strong> Alarma 04:00 AM</span></div>
+    </div>
+    <div class="tip">⚠️ CRÍTICO: El vuelo sale a las 07:20 de PVG T2. Estar en aeropuerto 04:30-05:00 AM. Hotel cerca de PVG es obligatorio.</div>
+  </div>
+</div>
+
+<!-- DÍA 24 — REGRESO -->
+<div class="day-card">
+  <div class="day-header transit">
+    <div><span class="day-num">Día 24</span><br><span class="day-date">Martes 28 de abril</span></div>
+    <span class="day-tag">✈️ Regreso</span>
+  </div>
+  <div class="day-body">
+    <div class="location">🇨🇳 Shanghai → 🇭🇰 Hong Kong → 🇺🇸 Los Angeles</div>
+    <div class="focus">Vuelos de regreso con conexión en Hong Kong</div>
+    <div class="activities">
+      <div class="activity"><span class="time">04:00</span><span class="desc">Despertar. Shuttle/taxi al PVG T2 (~15 min)</span></div>
+      <div class="activity"><span class="time">04:30</span><span class="desc">Check-in, seguridad. Tax refund si aplica</span></div>
+      <div class="activity"><span class="time">07:20</span><span class="desc">✈️ CX303: Shanghai → Hong Kong (2h 50min)</span></div>
+      <div class="activity"><span class="time">10:10</span><span class="desc">Llegada HKG T1. Conexión 2h35. Duty free, dim sum en Crystal Jade</span></div>
+      <div class="activity"><span class="time">12:45</span><span class="desc">✈️ CX884: Hong Kong → Los Angeles (13h)</span></div>
+      <div class="activity"><span class="time">10:45</span><span class="desc">Llegada LAX (mismo día 28 abril). ¡Bienvenidos a casa! 🏠</span></div>
+    </div>
+    <div class="transport-info">PVG→HKG: 2h50 · Conexión 2h35 · HKG→LAX: 13h · Llegada mismo día</div>
+  </div>
+</div>
+
+<!-- ══════════ TRANSPORTES ══════════ -->
+<h2>🚄 Transportes Internos</h2>
+<p style="margin-bottom:0.8rem">Costos por persona en USD. Vuelos internacionales ($958.13) ya pagados.</p>
+
+<table class="tt">
+  <tr><th>Día</th><th>Fecha</th><th>Tramo</th><th>Medio</th><th>Duración</th><th>Costo</th></tr>
+  <tr><td>1</td><td>5 abr</td><td>HKG Airport → Hotel</td><td>Airport Express</td><td>35 min</td><td class="cost">$15</td></tr>
+  <tr><td>1</td><td>5 abr</td><td>Movilidad HK</td><td>MTR + Ferry</td><td>—</td><td class="cost">$10</td></tr>
+  <tr><td>2</td><td>6 abr</td><td>Hotel → HKG Airport</td><td>Airport Express</td><td>25 min</td><td class="cost">$15</td></tr>
+  <tr><td>2</td><td>6 abr</td><td>PEK Airport → Hotel</td><td>Taxi/Didi</td><td>45 min</td><td class="cost">$15</td></tr>
+  <tr><td>3</td><td>7 abr</td><td>Movilidad Beijing</td><td>Metro + taxi</td><td>—</td><td class="cost">$8</td></tr>
+  <tr><td>4</td><td>8 abr</td><td>Beijing ↔ Mutianyu</td><td>Transporte privado</td><td>2h ida</td><td class="cost">$42</td></tr>
+  <tr><td>5</td><td>9 abr</td><td>Movilidad Beijing</td><td>Metro + taxi</td><td>—</td><td class="cost">$10</td></tr>
+  <tr class="hl"><td>6</td><td>10 abr</td><td><strong>Beijing → Xi'an</strong></td><td><strong>Tren bala G</strong></td><td>4h30</td><td class="cost"><strong>$72</strong></td></tr>
+  <tr><td>7</td><td>11 abr</td><td>Xi'an ↔ Terracota</td><td>Bus 306 + taxi</td><td>1h ida</td><td class="cost">$15</td></tr>
+  <tr class="hl"><td>8</td><td>12 abr</td><td><strong>Xi'an → Chengdu</strong></td><td><strong>Tren D/G</strong></td><td>3h30</td><td class="cost"><strong>$37</strong></td></tr>
+  <tr><td>9</td><td>13 abr</td><td>Movilidad Chengdu</td><td>Metro + Didi</td><td>—</td><td class="cost">$8</td></tr>
+  <tr><td>10</td><td>14 abr</td><td>Chengdu ↔ Leshan</td><td>Tren ida/vuelta</td><td>1h ida</td><td class="cost">$18</td></tr>
+  <tr class="hlf"><td>11</td><td>15 abr</td><td><strong>Chengdu → Zhangjiajie</strong></td><td><strong>Vuelo</strong></td><td>2h</td><td class="cost"><strong>$120</strong></td></tr>
+  <tr><td>12-13</td><td>16-17</td><td>Parque Nacional</td><td>Buses internos</td><td>—</td><td class="cost">$10</td></tr>
+  <tr class="hlf"><td>14</td><td>18 abr</td><td><strong>Zhangjiajie → Guilin</strong></td><td><strong>Vuelo</strong></td><td>1h15</td><td class="cost"><strong>$100</strong></td></tr>
+  <tr><td>15</td><td>19 abr</td><td>Guilin → Yangshuo</td><td>Crucero Río Li</td><td>4-5h</td><td class="cost">$45</td></tr>
+  <tr><td>16</td><td>20 abr</td><td>Movilidad Yangshuo</td><td>Bici + rafting</td><td>—</td><td class="cost">$32</td></tr>
+  <tr><td>17</td><td>21 abr</td><td>Yangshuo ↔ Longji</td><td>Tour</td><td>3h ida</td><td class="cost">$55</td></tr>
+  <tr class="hlf"><td>18</td><td>22 abr</td><td><strong>Guilin → Hangzhou</strong></td><td><strong>Vuelo</strong></td><td>2h</td><td class="cost"><strong>$100</strong></td></tr>
+  <tr><td>19</td><td>23 abr</td><td>Movilidad Hangzhou</td><td>Taxi + bote</td><td>—</td><td class="cost">$15</td></tr>
+  <tr class="hl"><td>20</td><td>24 abr</td><td><strong>Hangzhou → Shanghai</strong></td><td><strong>Tren G</strong></td><td>45 min</td><td class="cost"><strong>$10</strong></td></tr>
+  <tr><td>21-22</td><td>25-26</td><td>Movilidad Shanghai</td><td>Metro + taxi</td><td>—</td><td class="cost">$16</td></tr>
+  <tr><td>23</td><td>27 abr</td><td>Centro → Hotel PVG</td><td>Taxi</td><td>50 min</td><td class="cost">$28</td></tr>
+  <tr><td>24</td><td>28 abr</td><td>Hotel → PVG</td><td>Shuttle</td><td>15 min</td><td class="cost">$8</td></tr>
+  <tr style="background:var(--dark);color:white;font-weight:700"><td colspan="5">TOTAL TRANSPORTES INTERNOS / persona</td><td>~$804</td></tr>
+</table>
+
+<!-- ══════════ COSTOS ══════════ -->
+<h2>💰 Presupuesto Estimado</h2>
+<div class="cost-box">
+  <h3>Por persona — 24 días</h3>
+  <div class="cost-grid">
+    <div class="cost-item"><div class="amount">$958</div><div class="label">Vuelos internacionales<br>(ya pagados)</div></div>
+    <div class="cost-item"><div class="amount">$804</div><div class="label">Transportes internos<br>(trenes, vuelos, taxis)</div></div>
+    <div class="cost-item"><div class="amount">$920</div><div class="label">Hospedaje<br>(~$40/noche × 23)</div></div>
+    <div class="cost-item"><div class="amount">$460</div><div class="label">Alimentación<br>(~$20/día × 23)</div></div>
+    <div class="cost-item"><div class="amount">$300</div><div class="label">Entradas y actividades</div></div>
+    <div class="cost-item"><div class="amount">$200</div><div class="label">Imprevistos, SIM,<br>VPN, souvenirs</div></div>
+  </div>
+  <div style="text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2)">
+    <div style="font-size:0.9rem;opacity:0.8">TOTAL ESTIMADO POR PERSONA</div>
+    <div style="font-size:2.5rem;font-weight:700;color:var(--gold)">~$3,642 USD</div>
+    <div style="font-size:0.85rem;opacity:0.7">Rango: $3,100 – $4,100 según estilo de viaje</div>
+  </div>
+</div>
+
+<!-- ══════════ TIPS ══════════ -->
+<h2>📋 Tips Prácticos</h2>
+<div class="tips-grid">
+  <div class="tip-card"><div class="icon">📱</div><h4>Tecnología</h4><p><strong>VPN:</strong> ExpressVPN/NordVPN antes de llegar. <strong>SIM:</strong> eSIM en aeropuerto PEK. <strong>Alipay:</strong> Con tarjeta VISA — es el pago dominante en China.</p></div>
+  <div class="tip-card"><div class="icon">🛂</div><h4>Visa China</h4><p>Visa L (turista) en consulado chino en LA, 30-60 días antes. Pasaporte, foto, itinerario, reserva hotel. Hong Kong NO requiere visa para mexicanos (90 días).</p></div>
+  <div class="tip-card"><div class="icon">💳</div><h4>Dinero</h4><p>China = 95% digital. Llevar ¥2,000-3,000 efectivo de respaldo. VISA solo en hoteles/cadenas. Alipay/WeChat Pay para todo lo demás.</p></div>
+  <div class="tip-card"><div class="icon">🚄</div><h4>Trenes</h4><p>Reservar en <strong>Trip.com</strong> o 12306.cn 15-30 días antes. Pasaporte original para recoger boletos. 2ª clase es cómoda. Puntuales al segundo.</p></div>
+  <div class="tip-card"><div class="icon">🏨</div><h4>Hospedaje</h4><p>Trip.com o Booking. No todos los hoteles aceptan extranjeros — buscar "foreign guests welcome". Llevar pasaporte siempre.</p></div>
+  <div class="tip-card"><div class="icon">🗣</div><h4>Idioma</h4><p>Google Translate offline (chino simplificado) + función cámara. Básicos: Nǐ hǎo (hola), Xièxie (gracias), Duōshǎo qián (¿cuánto?), Cèsuǒ zài nǎr (¿baño?).</p></div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<div style="text-align:center;padding:3rem 0 2rem;color:#999;font-size:0.8rem;border-top:1px solid #eee;margin-top:3rem">
+  <p>China & Hong Kong · Abril 2026</p>
+  <p>Leonardo Gutiérrez & César Pérez</p>
+</div>
+
+</div>
+</body>
+</html>
